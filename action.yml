@@ -1,13 +1,14 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: 'DotNetCLI'
+description: 'Build, test, package, or publish a dotnet application, or run a custom dotnet command'
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
+  command:  # dotnet command you want to run
+    description: 'The dotnet command to run. Specify 'Custom' to add arguments or use a command not listed here. Valid values are: build, push, pack, publish, restore, run, test and custom'
     required: true
-    default: '1000'
+    default: 'build'
+  
 outputs:
-  time: # output will be available to future steps
-    description: 'The current time after waiting'
+  result: 
+    description: 'The result of the command as it would return from the commandline. A value 0 indicates success'
 runs:
   using: 'node12'
   main: 'dist/index.js'
